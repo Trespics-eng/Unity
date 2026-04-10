@@ -1,0 +1,197 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.navbar {
+     background: linear-gradient(135deg, #1f1f31 0%, #191e2c 100%);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+}
+
+.nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.nav-logo {
+    height: 40px;
+    width: auto;
+    border-radius: 8px;
+}
+
+.brand-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #e6ee09 0%, #444702 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    letter-spacing: 1px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #f2f2f2;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    position: relative;
+    padding: 5px 0;
+}
+
+.nav-link.active,
+.nav-link:hover {
+    color: #e6ee09;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(135deg, #e6ee09 0%, #444702 100%);
+    transition: width 0.3s ease;
+}
+
+.nav-link.active::after,
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.nav-auth-btn {
+    background: linear-gradient(135deg, #e6ee09 0%, #444702 100%);
+    color: #1a1a1a;
+    border: none;
+    padding: 0.6rem 1.25rem;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    font-size: 0.95rem;
+}
+
+.nav-auth-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(230, 238, 9, 0.3);
+}
+
+.auth-btn {
+    text-align: center;
+    width: 100%;
+    margin-top: 0.5rem;
+}
+
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 8px;
+    transition: background 0.3s ease;
+}
+
+.mobile-menu-btn:hover {
+    background: #f5f5f5;
+}
+
+.mobile-menu {
+    display: none;
+    background-color: #ffffff;
+    border-top: 1px solid #eee;
+    padding: 1rem 2rem;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.mobile-link {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    font-size: 1rem;
+    padding: 10px 0;
+    transition: all 0.3s ease;
+    border-radius: 8px;
+}
+
+.mobile-link.active,
+.mobile-link:hover {
+    color: #667eea;
+    padding-left: 10px;
+}
+
+/* Tablet Styles */
+@media (max-width: 768px) {
+    .nav-container {
+        padding: 0 1.5rem;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .mobile-menu-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .mobile-menu {
+        display: flex;
+    }
+
+    .brand-name {
+        font-size: 1.25rem;
+    }
+}
+
+/* Mobile Styles */
+@media (max-width: 480px) {
+    .nav-container {
+        padding: 0 1rem;
+        height: 60px;
+    }
+
+    .nav-logo {
+        height: 32px;
+    }
+
+    .brand-name {
+        font-size: 1.1rem;
+    }
+
+    .mobile-menu {
+        padding: 1rem;
+    }
+}
+
+/* Desktop hover effects */
+@media (min-width: 769px) {
+    .nav-link {
+        position: relative;
+    }
+}

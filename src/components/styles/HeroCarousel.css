@@ -1,0 +1,527 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.hero-carousel {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+}
+
+.carousel-container {
+    position: relative;
+    width: 100%;
+    height: 90vh;
+    min-height: 600px;
+    overflow: hidden;
+}
+
+.carousel-track {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.carousel-slide {
+    min-width: 100%;
+    height: 100%;
+    position: relative;
+    flex-shrink: 0;
+}
+
+.slide-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    filter: brightness(0.7);
+    transition: transform 0.3s ease;
+}
+
+.slide-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        135deg,
+        rgba(0, 0, 0, 0.85) 0%,
+        rgba(0, 0, 0, 0.6) 50%,
+        rgba(0, 0, 0, 0.85) 100%
+    );
+    z-index: 2;
+}
+
+.slide-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    z-index: 3;
+    width: 85%;
+    max-width: 900px;
+    animation: slideInUp 0.8s ease-out;
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -40%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+.slide-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, #e6ee09 0%, #444702 100%);
+    color: #1a1a1a;
+    padding: 0.5rem 1.5rem;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+.slide-title {
+    font-size: 4rem;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, #e6ee09 0%, #d4dc08 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    letter-spacing: -0.5px;
+    animation: fadeIn 0.8s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.slide-description {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    color: #f0f0f0;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    font-weight: 400;
+    animation: fadeIn 0.8s ease-out 0.2s both;
+}
+
+.slide-button {
+    background: linear-gradient(135deg, #e6ee09 0%, #444702 100%);
+    color: #1a1a1a;
+    border: none;
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    box-shadow: 0 4px 20px rgba(230, 238, 9, 0.3);
+    animation: fadeIn 0.8s ease-out 0.4s both;
+    position: relative;
+    overflow: hidden;
+}
+
+.slide-button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.slide-button:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.slide-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 30px rgba(230, 238, 9, 0.5);
+}
+
+.button-arrow {
+    transition: transform 0.3s ease;
+    font-size: 1.2rem;
+}
+
+.slide-button:hover .button-arrow {
+    transform: translateX(8px);
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(230, 238, 9, 0.2);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(230, 238, 9, 0.3);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 2rem;
+    color: #e6ee09;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel-btn:hover {
+    background: linear-gradient(135deg, #e6ee09 0%, #444702 100%);
+    color: #1a1a1a;
+    transform: translateY(-50%) scale(1.1);
+    border-color: transparent;
+}
+
+.prev-btn {
+    left: 30px;
+}
+
+.next-btn {
+    right: 30px;
+}
+
+.carousel-dots {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 15px;
+    z-index: 10;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dot.active {
+    background: linear-gradient(135deg, #e6ee09 0%, #444702 100%);
+    transform: scale(1.3);
+    box-shadow: 0 0 10px rgba(230, 238, 9, 0.5);
+}
+
+.dot:hover {
+    background: #e6ee09;
+    transform: scale(1.2);
+}
+
+.slide-counter {
+    position: absolute;
+    bottom: 40px;
+    right: 40px;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(10px);
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    color: #e6ee09;
+    font-weight: 600;
+    font-size: 0.9rem;
+    z-index: 10;
+    font-family: monospace;
+}
+
+.current-slide {
+    color: #e6ee09;
+    font-size: 1.1rem;
+}
+
+.slide-separator {
+    margin: 0 5px;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.total-slides {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* Loading State */
+.hero-loading {
+    height: 90vh;
+    min-height: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+    color: #e6ee09;
+}
+
+.loading-spinner {
+    width: 60px;
+    height: 60px;
+    border: 3px solid rgba(230, 238, 9, 0.2);
+    border-top-color: #e6ee09;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 1.5rem;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.hero-loading p {
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+}
+
+/* Empty State */
+.hero-empty {
+    height: 90vh;
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+}
+
+.empty-content {
+    text-align: center;
+    color: white;
+    max-width: 500px;
+    padding: 2rem;
+}
+
+.empty-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, #e6ee09 0%, #444702 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.empty-content p {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    color: #ccc;
+}
+
+.empty-button {
+    background: linear-gradient(135deg, #e6ee09 0%, #444702 100%);
+    color: #1a1a1a;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.empty-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(230, 238, 9, 0.3);
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+    .slide-title {
+        font-size: 3rem;
+    }
+    
+    .slide-description {
+        font-size: 1.1rem;
+        padding: 0 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .carousel-container {
+        height: 80vh;
+        min-height: 500px;
+    }
+    
+    .slide-title {
+        font-size: 2.2rem;
+    }
+    
+    .slide-description {
+        font-size: 1rem;
+        line-height: 1.5;
+    }
+    
+    .slide-badge {
+        font-size: 0.75rem;
+        padding: 0.4rem 1rem;
+    }
+    
+    .slide-button {
+        padding: 0.8rem 1.8rem;
+        font-size: 1rem;
+    }
+    
+    .carousel-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1.5rem;
+    }
+    
+    .prev-btn {
+        left: 15px;
+    }
+    
+    .next-btn {
+        right: 15px;
+    }
+    
+    .carousel-dots {
+        bottom: 25px;
+        gap: 10px;
+    }
+    
+    .dot {
+        width: 10px;
+        height: 10px;
+    }
+    
+    .slide-counter {
+        bottom: 25px;
+        right: 20px;
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .carousel-container {
+        height: 70vh;
+        min-height: 450px;
+    }
+    
+    .slide-title {
+        font-size: 1.6rem;
+        margin-bottom: 1rem;
+    }
+    
+    .slide-description {
+        font-size: 0.9rem;
+        line-height: 1.4;
+        margin-bottom: 1.5rem;
+    }
+    
+    .slide-badge {
+        font-size: 0.7rem;
+        margin-bottom: 1rem;
+    }
+    
+    .slide-button {
+        padding: 0.7rem 1.5rem;
+        font-size: 0.9rem;
+    }
+    
+    .carousel-btn {
+        width: 35px;
+        height: 35px;
+        font-size: 1.2rem;
+    }
+    
+    .carousel-dots {
+        bottom: 20px;
+        gap: 8px;
+    }
+    
+    .dot {
+        width: 8px;
+        height: 8px;
+    }
+    
+    .dot.active {
+        transform: scale(1.2);
+    }
+    
+    .slide-counter {
+        bottom: 20px;
+        right: 15px;
+        padding: 0.3rem 0.8rem;
+    }
+    
+    .hero-loading p,
+    .empty-content p {
+        font-size: 0.9rem;
+    }
+    
+    .empty-content h2 {
+        font-size: 1.8rem;
+    }
+}
+
+/* Hover Effects for Desktop */
+@media (min-width: 1025px) {
+    .carousel-slide:hover .slide-image {
+        transform: scale(1.05);
+    }
+    
+    .slide-button {
+        position: relative;
+    }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+    .carousel-track,
+    .slide-content,
+    .slide-button,
+    .carousel-btn {
+        transition: none;
+        animation: none;
+    }
+    
+    .carousel-slide:hover .slide-image {
+        transform: none;
+    }
+}
