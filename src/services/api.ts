@@ -1,7 +1,8 @@
 import axios from 'axios';
 
 const api = axios.create({
-    baseURL: 'http://localhost:5000/api', // Adjust base URL for prod
+    // baseURL: 'http://localhost:5000/api', // Adjust base URL for prod
+      baseURL: 'https://unity-server-5mpf.onrender.com/api',
 });
 
 // Interceptor to add token to requests
